@@ -1,5 +1,8 @@
 ﻿using Foundation;
 using UIKit;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 namespace HelloMobile.iOS
 {
@@ -17,9 +20,11 @@ namespace HelloMobile.iOS
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
-			return true;
+            // Override point for customization after application launch.
+            // If not required for your application you can safely delete this method
+            MobileCenter.Start("02ec9ffc-af5c-4a64-bed5-6076e3d05a0e",
+                    typeof(Analytics), typeof(Crashes));
+            return true;
 		}
 
 		public override void OnResignActivation (UIApplication application)
