@@ -24,6 +24,14 @@ namespace HelloMobile.iOS
             // If not required for your application you can safely delete this method
             MobileCenter.Start("02ec9ffc-af5c-4a64-bed5-6076e3d05a0e",
                     typeof(Analytics), typeof(Crashes));
+
+            // Newer version of Xamarin Studio and Visual Studio provide the
+            // ENABLE_TEST_CLOUD compiler directive in the Debug configuration,
+            // but not the Release configuration.
+            #if ENABLE_TEST_CLOUD
+            Xamarin.Calabash.Start();
+            #endif
+
             return true;
 		}
 
